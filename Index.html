@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ระบบบันทึกผลการปฏิบัติงานประจำวัน</title>
+<meta name="description" content="บันทึกงานที่ทำ งานค้าง และแผนงานประจำวัน คณะสาธารณสุขศาสตร์ มหาวิทยาลัยบูรพา">
+<meta property="og:title" content="ระบบบันทึกผลการปฏิบัติงานประจำวัน">
+<meta property="og:description" content="บันทึกงานที่ทำ งานค้าง และแผนงานประจำวัน คณะสาธารณสุขศาสตร์ มหาวิทยาลัยบูรพา">
+<meta name="theme-color" content="#0E4F54">
+<meta name="apple-mobile-web-app-title" content="บันทึกงาน">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E4F54'/%3E%3Crect x='20' y='6' width='24' height='52' rx='11' fill='%231E2C32'/%3E%3Ccircle cx='32' cy='17' r='7' fill='%23CF4034'/%3E%3Ccircle cx='32' cy='32' r='7' fill='%23E0A019'/%3E%3Ccircle cx='32' cy='47' r='7' fill='%232E9559'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAU2klEQVR42u2dW4wkV3nH/985py5d1be57G0Wh11MsDHYCgsYTEwAEUwiQKCwAokgI6yQhwgJkUceUMQDiYIU8sBLRGSERYiQ7AjFIRK3BCJjg4EF2eHmYK+Nvfednenp7uq6nHO+PFTP7nixp3vG08129fk0snY92q6uOr/6f9+5/Q81330cLlw8Vwj3CFw4OFw4OFw4OFw4OFw4OFw4OFw4OFw4OFw4OFw4OFy4cHC4cHC4cHC4cHC4cHC4cHC4mI1Qc3SvzCACACIu/zB2EDPA4C0f4uCoDBMsBAhgCGNgrSwKsnZ8NozvgchKCSnAIGYwgwFycMw2EyQKrQZ9NUhllsq8IGvJGGIemw2yUoLIeJ4JAl0LdRhazwNA1lZYSyoLB0sJZq/f97tdLxmIohjisqvMQsYC7BWF109AsFLqWi1vNYsoYqXImEoiUkE4WAgAQacTdDZUmsJaFqKUEIyvFlfTAYCYqPwQYvZ7Pb/XM0GQLrTzRoOl3EmecnD8jgTD6/fD1Utevz9MK0oNmdg1GVdlq8sIEsk8j8+cC9fWB4uLebMxrEUcHNdahcFCEBCdOx+urQHgHTKxNSXw+BclghIyz+unT+f9ZrJvn1WqMhKiKkKGlDIv4rNnVZKwlGMyIVD2YGABveX/y2f/aixEpPQ7GyoZ9FYO6SgiYyrwXGVw400VIEOlaePpZ2Ses1LjiIQEGBgwEoYGBKFFCAgBISQMgAFjwLCAIshxn6Uka4ONDVZSRxFZO+slqqoIGc+cImvLHsr2WAggBwYWdYFX+bjZo6MSByQdkkOREMAZg3OGTxo8WvAvCnQsagI+YLfPOJsdlvjsOQBZuz3r+qGqQ8aozogANNCxWJH4YJ3+KKAXK9QIhmGAYss/XfRwi0eSMGB6SuN/Mr5/wKcN6gJqjETDQlzhQ+vZ1Y8ZhoOllFl2hYztJR/oMVoCf16nd9bokETGyBgpD0vRrf++2CxkBXBE4QaP3lmj/xjwfQPuWNQJZkw+iLJWa3b5mOGag5gbp0+LohhWoNumkg2LP/Dpb9vibSEJoM+wm7+i5/kpf6WBASMm3BbQGwL6tcaTGuE4bU3w+omOY+t5NJv921mFg4WIz533er0rXdbnIYOBLuO9Ef1Ni5oCG3ylnzJmF1cAFkgYSwJ/UqMNxk8L+DTqE0iQtTLN8lbT9VamWmr43W504cL2ZJRNmzP+ukEfiSllFIDc1WRZiUgBMPCWgBYEHsygRn6QEDLPIaio12ex8zKD6zmIyNra6iUWYnsyFNCxuDOmD0TUYfALvlsBMNBhfCCiO2Pq2FElGzNLGa5ekmm6fe5zcOyZbIRrazJNIcT2Fei6xdtDuiumi3YHeWQcCblocVdMbw9p3Y4aBSEitrVLl2YxrcwaHEKQ1kFnY3vZEMCAcVTh4w3KeVhg7plybWarjzfoqMKAt32IzCyk1+2pUTQ7OPagDvV7PVEUI/O3BT7aoCWBfAIrcgjIgSWBjzZonHkUYg7WO+yUY9JpJehsjLylHuO1Pt3m0wZjQqleAhuM23x6rU89HvEcmWhMph0cu88pMstklvG2+syABN4fTelLvT8aztSMzIZekowsoh0cuy1FibwkIWO2ef8EkDBu8eg1PvV5srdXDqa9xqdbPEpGVR4g8vrJbC0Ymx04iMCsBun2C7oI0IzbAviEKbyhDPiE2wJoHlHZMJHMsu3JdnC8gOENY2SWbT+NYoCGwK0+MjuNexNAZnGrj4YYNeFCJItC5jk7OCYBhywKse0kFgEFsF/ggKRiWt+rAA5I2i9QbN8tIoK1Ms+dckxEwMmY7VfgEVAw9ksqJ06n0AgEGKBO2C+p4NFXFFoPSxAHxx5/V61HNpVlHFVQUyk4LlOrCEcV7PZwMINIaD1DNemMwFE+2c29J9s3VZOmvQ+NgOZ4OIq8mKW3cZbGOcZ74X4nS/PMnt6Cg2NSIefmog6OHSv8BmPK9R4DG1zBPdWVgoMBQTipRw9J7S2OmnFSQxDYwXEtw+ERzhvu8RjzHXt0xXLp8nnDnoPjWocDOG9xzrA3rYt6wDnD5y08ODiu+Wq0a/FwjkBgCjtWLRAIPJyjaytYk1YNjnJI6qEMOU9phDRnPJRNddjNwbH7VzkiPFLwj3KOabLiYYGY8KOcHyk4IlgHx0z0Zg3wlWRKl/tKMqV5HAfH3rzQdcIPc34o5yZNasDUAE3CQzn/MOd6FWUDFfYhFcDnurxq4U+gE8GAD6xafK7LFXZyreatWaBGOKnx2S6XS8J4T8koF4B9tssnNWoVlY0qK4cB2gJfT/nuPi+LUdYaOyHDAssCd/f56ym3BYxTjlkMDbQE7unzlxNuEQgv9BUvN+a3CF9O+J4+twQ0qhzVdzD2CZ/p8hMaH2sQAQnvZi81AwaICAz8fZfvG3B9DjyuK26Mz5srce5L+GNrfMpgUUABZuwsU2KhgEWBUwYfW+P7Ei7XE3HV4ai+cpT1Y0vgkYL/ao3fW3uWs4/Fczj78OZ/BYYucmcM/qU3dPZpVbrOmC84LtenMSFl/FOP7x/wu2rbeYJ5BAlIwoDx5LM9wWKaFzIwV0dqWEACCwIdxud7/K8Jv9x7HjdB/Sw3wZ5FTWBBwKKyvdZ5h2NrAVGmhp/keDhjSQiIW5szZwR0GBnDMDxCSGgJWMyRYMwpHFsRARCVPveABbYaJEigvuVXc4jF/MJx1bgFESQ960GUBzJZrn5/xMHxHEEEQWBGYVAY0pbMlmpCCijBnmRPggi2UkchODhGYZFr9HPhSV6K7YsWipWWuX5fYZkACOLHL3inO/KZNbXaF4Wh2Le+mkdE5gsOKZBr9DJx3YJ+5y2Dt7xscNOhYiG2ocdKXGl5bSktaK0vfn7G++/Hat/7dfD0mqoH1lcw1sFRRcEAsJ6Ilbb+i9t7x4/1D7e1YcoKaEvdlJjpKnVZjM1bX27uuGlwal3deyK+90R0el01axaYFwmZHZNaIbwk8ZJkF558UqAwGBR05+v7f/dnl/74xoEU3M9EbsgylWdziS0/JUnGUqZpUFAc2De+NP3TVw6MpR8/5QuCJ3fDBzFb38+bzVlxu64+HFKgm1Ij5E+/Z+0v39glQi8TYCoPfdtm7+plaKylpKDY5ztuGhxd1g8+EW4MROjtmI+Zg6PiE28lGTceLO6+8+K7bklW+0IbUmJn+5mJoAS0odW+eNctyd13XrzxYNFNSVb9OG8xD2R84UMXbzhYrPbETrH4bURWe+KGg8UXPjQXfFT25oiQa7Qj++n3rLVqtjsgtRe7jpREd0Ctmv30e9bakc11lQ8vry4cQKbpk+9Yv/lwvrFHZFzmY2NANx/OP/mO9UxX+WD7asIhBToD+uDr+mWdofZ6p6KSKOuPD76u3xlUNrlUcVMTIddYaZuP3L7Ry4SczKstCb1MfOT2jZW2qWpyqSAcgtDLxPFjyaHWBJutRPBQyxw/lvQyIRwcsyIb1y3q48f6/XyybSYI/VwcP9a/blFXUjxE9WSjn4vbr88OtyfeYCWIh9v69uuzSYPo4NiDYIYn+U0vGxhLU3iViWAsvellA09y9SZcKgUHEbTBct3cdKhIp9LJJCDVdNOhYrlutKlaZqkWHEBu6HDbLEZWT+UwRiJoi8XIHm6b3FSt6qhaWtEWKy1T86cn8syo+bzSMrpySz2qllaMpev3aSmmCocUfP0+PZ0qx8HxgsLyvFzUweHCwbGHt0TzclEHx47T/+MX1DTTf1noPH5BTbPQcXDsJpTA6Y4c5FOFY5DT6Y5UwinHtawcgC/51Lq8lAg1lQNcmaEELiXi1Lr0JTt762s6rSiJiz358zNeqHg6xvih4p+f8S72pJJwaeWaDiIUhr77WG06FUBZ5Xz3sVphyM3KXuthGbFvH3g8OLWufDXZV5kZvsKpdfXA40HsW+sm3q79zOIrPH1J3XsinnSDlSDeeyJ++tLEQXRw7Fmb1QN774noTEdOrs1KCs905L0nonpg3QjpLInH6XX5+Qea9cCayTSbYdQD+/kHmqfXZSVlA1UdPjcWrRp/6Qfx/Y9ES7HVe+3Now2WYnv/I9GXfhC3alzVrfeVnVthIFD8qa+1Hz3lN2u8h3xog2aNHz3lf+pr7UBVecN9deFg+ArrifjEVxc6A9HYIz60QaPGnYH4xFcX1hNR1YRScTjK5NII+ZdnvQ9/cflXZ72lutV2923JDG2xVLe/Out9+IvLvzzrNUKutpdLxafsL/Nx1z3LZf2hJO8UkRILJbmsM+66Zy7IwDz4czAj9JAV9J//G60l8pWH8/11axjaDEc0n29kkxkMWIanuBXyal/+w7fan/lGixmRvxv/p5nz55gL2ydjoSSU5C8+VP/mL8Ljx5KrbJ+uMoMrPVs8yYEHSXxqXf3zA8+yfZoTZ7B58QQr274d2fVE/OO3m/ediP7wpdllw7j4uQzjLvXlVYZx7cg6w7iKS8hibNcS8ZUfxf/2k2gpti9a0COtJhdja3m+rAQxhz6kzDAMJbEQWWZ0U3rkGf/Eb57bpDb2mYjnEIs5hWMrIgCUgCeZiJ+jGmVYxjxbXM+19zkITMRln2Tr1FlpNyk2eywOjrliorQ059zCMASRIqpdeRQ80KwtLEMSeWJok84OjsqHIGjLuaFQer8Xq5VILgei6YmmP+zSENmN3G4U5mKmTyf6zIATTb6AEtXcuuTgGAqGBSdatPzwdQv+7zflog9PlGdn8JapfRVHWAEEobDmUp7/30b2yJrt5BRIiDmqQtT8CAZnhkJZu/VAcHNbtHxoywWj0CAAtPUEQDYMMBggkkt+7cD+4OZ29uh6emKVU0OBnBMJUXOiGTzQ6ro4vmNF7g85s5xoEA2Lj+fUmE1cuGDkmmqq9sb9/g3N/jdO66f7FMp50I+52CvLqQletdR43xG5EHBfwzIEjXvwMAGCYJn7Wi4EjfcdCV61xKlxylEJzSg4fttKcGyJM8PMu9/VKogLC0J8x4paDvr/dZY8qrZ+VNu7mzgxtdfvC29d5oHezBcvrKQFeKDDW5drr9/HianmBurqwyGIE+2/ol17wz7b03vZioJsT9fesM9/RZsTXWE+KgoHgQsr94XxWw/yZJafs+H4rQflvrDMNQ6OmQrL0ZsPUOxB8943HgGaKfaiNx+ocLdWVFM2MusdqXtHG5yaSd2iAKfGO9rwjtQ5q6Z4VNXvn8JXL2EqRqThq5eqWnaICspGbtXhyHtxPPEXupSoF8fqcMR5BcWjenAQDPsvaWCK7i3+SxowXD1n/MrBYZlC6R2JWdtpqL0g1tY7ElNYwQmXysFhWDQ80fAwtQFug80rOjiu8YLDsGh6U32PLVMoRdNjw3AOxtd0wcEsl4Lh2q3pBDMEyaUAXLWyo3JphUGhmvYbTKBQwTn7zERNOi8XdXDsogcxLxd1cFzJGONsoSZwqqet8AxO9Ti5jIVwcEyk0jS+X/5hu9qQyKxmsFOsDYlg2axmI75beQvBqFtwcOxeObZvcgZJshsFp1NchiOIU2M3CpKjF4Y55ZjM+8lsfd+qUT5Lkmy3sN0CclrfTGLzijSix0tkglnq8c4OyMxWSuP7I5xPBHFqiif7NJ09SJZJieLJ/mitYrZKjf7+Do7dwQEiXQtHvHnMkJQ/0cUUj4fMn+hCjqgkiFnXwtHK5+DYdU2qa7VRNSnIF/pUUjzVp0BMttvCoEAUT/X1qYT8ba815pd3cOweD2t1rabDEHaUXYbl9MermMqZGumPV0fnL2tZyiKKyNoZGmKfqUEwZhYib9RpRGYBBaJ4slec7FIoMSHfFQsKZXGyWzzZGylRxFxEkQnD2XItnSk4iMjavNm0njdaPAQl3znH/QJqAluPGFDE/SL5zrkx+8xZuzVzfrazNnxurfW8rN0aoc8M8oS5kPa/fZbkRGScJPW/fdZcSMkbJRvWFnFcxDFZ6+CYuHhkrdZo8bBMkcp/tj548IKoq73s1loWdTV48EL+s3WKxvrkdKGNGYwZnHhjtp6XLi7SGGUpRXLw/QvpwxeHxj0vkJDS3KWm0ocvDr5/gaJRS4qIyJi82ZhF2cAsORhfNWYQ1VSaySwbaWhMgvLHNmxivOsbJMXuxz8sky9BSL51ZvC98+SLcThmpXorKzO6CGgm4SjD1EK/26MxRqPJE/qZvn4mUYcjseDDAoavMmzZTi2YIQXVpFnNev/+dPGrDoVyTIh7K4dMGNJsHq0wq3AQYJVnAj/Y2BjnvSRf2rU8/2UHBctFXzQ8IsBsWhtfBQpj6OwDIo8okNwr0h+u9r952q7lYy36IiKtB/uWs3abjHHK8TtILiYIrKf8bm/002eQIhgUT3Tzx7qcWVFTIlYUSpI07NEQlT/kCVKCfEmAuZRnP72UfOtM8dgGCaJxOsZEpHW2uJDs2zdbo15X30fz3ccxy8FSBuvr8dlz486GD90ELYVSHaqN5SaYmh24CZZkLLT7Bw7MYhG6NWbe2Ye0ztptAPGZsywExKiNbqW7aKRgufhNvzjZex4fUr7sQ0qR2rQzHu/7VIKMKsAxfFPbbRYiOndeGMNy1LnhPCw1yBcgKv86tP7ZVBcKBGjLmSvjDcAwkBzYny4sVIAMVMQTjIi0zptNEwTR+QterzeWhGyhZJhunt0LHXdQhAjMpLUJgv7BAzqKyFTETm6GC9LffnGtUnmryVKpLBNlC010WR4RADIWAtlCu79y0Pr+7PZNKqocl/lgBnO60M4b9XBtzd/oiqKAEFx2Q/ZqsKH8KGYyhqXM2q10oW2CgKyd6b5JpeG43HbGsJTJ/v3pwkLQ6fjdnsxzGAOiISXAjptwEyyyFgwQrOdljXrWbJowhLVVEowqw3G5CGApB8vL6cKCSlOVDFSayjwnrYfjlTsQkqHXsZXSBL6u1crFGVYpWEta4zJzDo7ZQgRERRQVcQxrhTGiKMhamedk7LjD5wQdhBBkPI+VYkFgUKWxqDocW2tGa8tlySyErtUAFHG8s0Ytu75lqXF56o6o2g9vbk5N2GzI4QjETovTrRxUnYn5g2ObxnbxPCHcI3Dh4HDh4HDh4HDh4HDh4HDh4HDh4HDh4HDh4HDh4HDhwsHhwsHhwsHhwsHhwsHh4pqK/wd/ZLJxQcTolwAAAABJRU5ErkJggg==">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EDF1EF;--ink:#18262E;--muted:#5D6B70;--brand:#0E4F54;--lamp:#1E2C32;--red:#CF4034;--yellow:#E0A019;--green:#2E9559}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:'Noto Sans Thai','Leelawadee UI',Tahoma,sans-serif;line-height:1.7}
+[hidden]{display:none!important}
+
+/* ระบบจริง (Apps Script) ฝังเต็มหน้าจอ */
+#app{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:var(--bg)}
+
+/* หน้าเปิดระบบ / หน้าโหลด */
+.cover{position:fixed;inset:0;display:grid;place-items:center;padding:24px 20px calc(24px + env(safe-area-inset-bottom));background:var(--bg);z-index:2;transition:opacity .35s}
+.cover.gone{opacity:0;pointer-events:none}
+.card{width:min(440px,100%);display:grid;grid-template-columns:auto 1fr;gap:6px 22px;align-items:center}
+.lamp{grid-row:span 3;display:grid;gap:10px;background:var(--lamp);padding:14px 12px;border-radius:40px}
+.lamp i{width:30px;height:30px;border-radius:50%;background:#3a4a50}
+.lamp i:nth-child(1){animation:on-r 2.4s .1s both}
+.lamp i:nth-child(2){animation:on-y 2.4s .5s both}
+.lamp i:nth-child(3){animation:on-g 2.4s .9s both}
+@keyframes on-r{30%,100%{background:var(--red);box-shadow:0 0 14px var(--red)}}
+@keyframes on-y{30%,100%{background:var(--yellow);box-shadow:0 0 14px var(--yellow)}}
+@keyframes on-g{30%,100%{background:var(--green);box-shadow:0 0 14px var(--green)}}
+h1{margin:0;font-size:clamp(21px,5.2vw,27px);line-height:1.35;font-weight:700;color:var(--brand)}
+.org{margin:0;color:var(--muted);font-size:15px}
+.status{margin:0;font-size:15px}
+.actions{grid-column:1/-1;display:grid;gap:10px;margin-top:18px}
+.btn{display:block;text-align:center;text-decoration:none;border-radius:12px;padding:14px 18px;font-weight:600;font-size:17px;background:var(--brand);color:#fff}
+.btn:focus-visible,.link:focus-visible{outline:3px solid var(--yellow);outline-offset:2px}
+.note{grid-column:1/-1;margin:14px 0 0;font-size:14px;color:var(--muted)}
+.link{color:var(--brand);font-weight:600}
+@media (prefers-reduced-motion:reduce){
+  .lamp i{animation:none}
+  .lamp i:nth-child(1){background:var(--red)} .lamp i:nth-child(2){background:var(--yellow)} .lamp i:nth-child(3){background:var(--green)}
+  .cover{transition:none}
+}
+</style>
+</head>
+<body>
+<iframe id="app" title="ระบบบันทึกผลการปฏิบัติงานประจำวัน" allow="clipboard-write" hidden></iframe>
+
+<div class="cover" id="cover">
+  <div class="card">
+    <div class="lamp" aria-hidden="true"><i></i><i></i><i></i></div>
+    <h1>ระบบบันทึกผลการปฏิบัติงานประจำวัน</h1>
+    <p class="org">คณะสาธารณสุขศาสตร์ มหาวิทยาลัยบูรพา</p>
+    <p class="status" id="status" role="status">กำลังเปิดระบบ…</p>
+
+    <div class="actions" id="actions" hidden>
+      <a class="btn" id="openBtn" href="#" target="_top">เข้าสู่ระบบ</a>
+    </div>
+    <p class="note" id="note" hidden></p>
+  </div>
+</div>
+
+<script>
+/* ===== ตั้งค่า: ใส่ URL เว็บแอป Apps Script (ลงท้ายด้วย /exec) ===== */
+const APP_URL = 'https://script.google.com/a/macros/go.buu.ac.th/s/AKfycbyO_PmT7nPMY1WON0vxAH-koqf378wsFSMAkIgpVc0ORtOxnLX_DINc0iFcP1KZRztL/exec';
+
+const $ = id => document.getElementById(id);
+const openDirect = APP_URL;
+$('openBtn').href = openDirect;
+
+// Safari และทุกเบราว์เซอร์บน iPhone/iPad บล็อกคุกกี้ Google ในกรอบฝัง (iframe)
+// จึงเปิดระบบโดยตรงแทน ส่วนเบราว์เซอร์อื่นฝังระบบไว้ในหน้านี้
+const ua = navigator.userAgent;
+const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const isSafari = /^((?!chrome|chromium|crios|fxios|edg|android).)*safari/i.test(ua);
+const mode = new URLSearchParams(location.search).get('mode'); // ?mode=direct หรือ ?mode=frame
+
+if (mode === 'direct') {
+  location.replace(openDirect);
+} else if ((isIOS || isSafari) && mode !== 'frame') {
+  showLaunch('แตะปุ่มด้านล่างเพื่อเข้าใช้งานด้วยบัญชี Google ของมหาวิทยาลัย',
+    'เพิ่มหน้านี้ไว้ที่หน้าจอโฮม: กดปุ่มแชร์ แล้วเลือก "เพิ่มไปยังหน้าจอโฮม"');
+} else {
+  const frame = $('app');
+  frame.hidden = false;
+  frame.addEventListener('load', () => {
+    $('cover').classList.add('gone');
+    setTimeout(() => { $('cover').hidden = true; }, 400);
+  });
+  frame.src = openDirect;
+  // โหลดนานผิดปกติ: เสนอให้เปิดโดยตรง
+  setTimeout(() => {
+    if (!$('cover').classList.contains('gone')) {
+      showLaunch('ระบบโหลดช้ากว่าปกติ', 'ถ้าหน้ายังไม่ขึ้น กดเข้าสู่ระบบเพื่อเปิดโดยตรง');
+    }
+  }, 10000);
+}
+
+function showLaunch(status, note) {
+  $('status').textContent = status;
+  $('actions').hidden = false;
+  $('note').hidden = !note;
+  $('note').textContent = note || '';
+  $('openBtn').focus();
+}
+</script>
+</body>
+</html>
