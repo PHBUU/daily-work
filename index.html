@@ -68,7 +68,7 @@ h1{margin:0;font-size:clamp(21px,5.2vw,27px);line-height:1.35;font-weight:700;co
 
 <script>
 /* ===== ตั้งค่า: ใส่ URL เว็บแอป Apps Script (ลงท้ายด้วย /exec) ===== */
-const APP_URL = 'https://script.google.com/a/macros/go.buu.ac.th/s/AKfycbyXpF3KI5fq980T7PB66npADH4apVlUtG0k2gY1VvWCXqt2yIqwRkt42yiY1swe8uFO/exec';
+const APP_URL = 'https://script.google.com/a/macros/go.buu.ac.th/s/AKfycbzA0B5jNvsXb8d6UML7dtgUoHrWnqr3RKrgGW1gmWpSP8itN8lURLRlEQtlbduwn9NG/exec';
 
 const $ = id => document.getElementById(id);
 const openDirect = APP_URL;
@@ -80,6 +80,13 @@ const ua = navigator.userAgent;
 const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 const isSafari = /^((?!chrome|chromium|crios|fxios|edg|android).)*safari/i.test(ua);
 const mode = new URLSearchParams(location.search).get('mode'); // ?mode=direct หรือ ?mode=frame
+
+// เปิดจากในแอป LINE: ให้ LINE เปิดหน้านี้ในเบราว์เซอร์ของเครื่องแทน (ในแอปล็อกอิน Google ไม่ได้)
+const qs = new URLSearchParams(location.search);
+if (/ Line\//i.test(ua) && !qs.has('openExternalBrowser')) {
+  qs.set('openExternalBrowser', '1');
+  location.replace(location.pathname + '?' + qs.toString() + location.hash);
+}
 
 if (mode === 'direct') {
   location.replace(openDirect);
